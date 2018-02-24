@@ -1,13 +1,13 @@
 <p>
-    post-detail works!
+    <button (click)="goBack()">go back</button>
 </p>
 
 <div *ngIf="post">
-    <h2>{{ post.title | uppercase }} Details</h2>
-    <div><span>id: </span>{{post.id}}</div>
+    <h2>{{post.title.rendered}}</h2>
+    <div [innerHTML]="post.content.rendered"></div>
     <div>
         <label>name:
-            <input [(ngModel)]="post.title" placeholder="name">
+            <input [(ngModel)]="post.title.rendered" placeholder="name">
         </label>
     </div>
 </div>

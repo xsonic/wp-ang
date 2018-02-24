@@ -1,7 +1,7 @@
 <h2>My postes</h2>
 <ul class="posts">
-    <li *ngFor="let post of posts" (click)="onSelect(post)" [class.selected]="post === selectedPost">
-        <span class="badge">{{post.id}}</span> {{post.title}}
+    <li *ngFor="let post of posts"
+        routerLink="/post/{{post.id}}">
+        <span class="badge">{{post.id}}</span> {{post.title.rendered}}
     </li>
 </ul>
-<app-post-detail [post]="selectedPost"></app-post-detail>
