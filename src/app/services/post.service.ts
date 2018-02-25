@@ -4,7 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {of} from 'rxjs/observable/of';
 
-import {Post} from './classes/posts';
+import {Post} from '../classes/posts';
 
 @Injectable()
 export class PostService {
@@ -15,7 +15,7 @@ export class PostService {
     constructor(private http: HttpClient) {
     }
 
-    // http://dev.form-fabrik.de/wordpress/wp-json/wp/v2/posts
+    //  http://dev.form-fabrik.de/word press/wp-json/wp/v2/posts
     getPosts(): Observable<Post[]> {
         return this.http.get<Post[]>(this.postsUrl);
         // this.messageService.add('HeroService: fetched heroes');

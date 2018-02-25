@@ -1,7 +1,10 @@
+<div *ngIf="isAuthenticated()" class="">Welcome {{globals.username}}</div>
 <h1>{{title}}</h1>
 <nav>
-    <a routerLink="/posts">Heroes</a>
-    <a routerLink="/login">Login</a>
-    <a (click)="loginTest()">Login Test</a>
+    <a routerLink="/posts">Posts</a>
+    <a *ngIf="!isAuthenticated()" routerLink="/login">Login</a>
+    <a *ngIf="isAuthenticated()" routerLink="/profile">Profile</a>
+    <a *ngIf="isAuthenticated()" (click)="logout()">Logout</a>
 </nav>
 <router-outlet></router-outlet>
+<ng-snotify></ng-snotify>
