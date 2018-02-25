@@ -6,9 +6,19 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppComponent} from './app.component';
 import {PostsComponent} from './posts/posts.component';
 import {PostDetailComponent} from './post-detail/post-detail.component';
-import {PostService} from './post.service';
+import {LoginComponent} from './login/login.component';
+
+import {ReactiveFormsModule} from '@angular/forms';
+
 import {AppRoutingModule} from './app-routing.module';
-import { LoginComponent } from './login/login.component';
+
+import {PostService} from './post.service';
+import {AuthService} from './auth.service';
+
+
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {AuthInterceptor} from './classes/authInterceptor';
+
 
 @NgModule({
     declarations: [
@@ -21,12 +31,20 @@ import { LoginComponent } from './login/login.component';
         BrowserModule,
         FormsModule,
         AppRoutingModule,
-        HttpClientModule
+        HttpClientModule,
+        ReactiveFormsModule
     ],
     providers: [
         PostService,
+        AuthService,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        }
     ],
     bootstrap: [AppComponent],
 })
 export class AppModule {
 }
+// a
