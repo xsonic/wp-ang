@@ -9,6 +9,8 @@ import {
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 
+import {AuthService} from './auth.service';
+
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
@@ -27,14 +29,14 @@ export class AuthInterceptor implements HttpInterceptor {
             });
 
             // return next.handle(cloned);
-            return next.handle(clone).do(event => {
+            return next.handle(clone).do(() => {
             }, (error: HttpErrorResponse) => {
                 console.log(error);
                 if (error.status === 401 || error.status === 403) {
                     //navigate /delete cookies or whatever
                     console.log('Errör');
-                    localStorage.removeItem('id_token');
-                    localStorage.removeItem('expires_at');
+
+                    AuthService.cleanAuthLocalstorage();
                     this.router.navigateByUrl(`/login`);
                     // return Observable.of(error.message);
                 }

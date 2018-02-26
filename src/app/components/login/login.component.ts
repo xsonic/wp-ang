@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
-import {FormGroup, FormControl, Validators, FormBuilder}  from '@angular/forms';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormGroup, Validators, FormBuilder} from '@angular/forms';
 
-import {AuthService} from '../../auth/auth.service';
-import {Globals} from '../../globals';
+import {AuthService} from '@app/auth/auth.service';
 
 @Component({
     selector: 'app-login',
@@ -18,10 +16,9 @@ export class LoginComponent implements OnInit {
 
     constructor(private formBuilder: FormBuilder,
                 private authService: AuthService,
-                private router: Router,
-                private globals: Globals) {
+                private router: Router) {
 
-        if (this.authService.isAuthenticated()) {
+        if (AuthService.isAuthenticated()) {
             this.router.navigateByUrl('/profile');
         }
 
@@ -34,23 +31,14 @@ export class LoginComponent implements OnInit {
     login() {
         const val = this.loginForm.value;
 
-        // if (val.username && val.password) {
         this.authService.login(val.username, val.password)
             .subscribe(
-                (data) => {
-                    this.globals.username = data.user_nicename;
+                () => {
                     this.router.navigateByUrl('/profile');
+                },
+                () => {
                 }
             );
-        // }
-    }
-
-    isLoggedIn() {
-        return this.authService.isAuthenticated();
-    }
-
-    isLoggedOut() {
-        return this.authService.isUnauthenticated();
     }
 
     ngOnInit() {

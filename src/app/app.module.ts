@@ -7,25 +7,26 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TranslateModule} from '@ngx-translate/core';
 
-import {AppComponent} from './app.component';
-import {PostsComponent} from './views/posts/posts.component';
-import {PostDetailComponent} from './views/post-detail/post-detail.component';
-import {LoginComponent} from './views/login/login.component';
-import {ProfileComponent} from './views/protected/profile/profile.component';
+import {AppComponent} from '@app/app.component';
+import {HomeComponent} from '@app/components/home/home.component';
+import {PostsComponent} from '@app/components/posts/posts.component';
+import {PostDetailComponent} from '@app/components/post-detail/post-detail.component';
+import {LoginComponent} from '@app/components/login/login.component';
+import {ProfileComponent} from '@app/components/protected/profile/profile.component';
+import {NavbarComponent} from '@app/components/_partials/navbar/navbar.component';
 
-import {AppRoutingModule} from './app-routing.module';
+import {AppRoutingModule} from '@app/app-routing.module';
 
-import {PostService} from './services/post.service';
-import {AuthService} from './auth/auth.service';
-import {AuthGuardService} from './auth/auth-guard.service';
+import {PostService} from '@app/services/post.service';
+import {AuthService} from '@app/auth/auth.service';
+import {AuthGuardService} from '@app/auth/auth-guard.service';
 
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
-import {AuthInterceptor} from './auth/auth.interceptor';
-
-import {Globals} from './globals'
+import {AuthInterceptor} from '@app/auth/auth.interceptor';
 
 // vendor
 import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
+import {BsDropdownModule} from 'ngx-bootstrap';
 
 @NgModule({
     // exports: [,
@@ -37,6 +38,8 @@ import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
         PostDetailComponent,
         LoginComponent,
         ProfileComponent,
+        NavbarComponent,
+        HomeComponent,
     ],
     imports: [
         BrowserModule,
@@ -46,7 +49,8 @@ import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
         ReactiveFormsModule,
         BrowserAnimationsModule,
         SnotifyModule,
-        TranslateModule.forRoot()
+        TranslateModule.forRoot(),
+        BsDropdownModule.forRoot()
     ],
     providers: [
         PostService,
@@ -65,10 +69,8 @@ import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
             useValue: ToastDefaults
         },
         SnotifyService,
-        Globals
     ],
     bootstrap: [AppComponent],
 })
 export class AppModule {
 }
-// a

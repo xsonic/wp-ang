@@ -3,8 +3,8 @@ import {Component, OnInit, Input} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Location} from '@angular/common';
 
-import {PostService}  from '../../services/post.service';
-import {Post} from '../../classes/posts';
+import {PostService}  from '@app/services/post.service';
+import {Post} from '@app/classes/posts';
 
 @Component({
     selector: 'app-post-detail',

@@ -1,0 +1,25 @@
+<div [formGroup]="loginForm" class="row">
+    <div class="col-md-4 offset-md-4">
+        <div>Login</div>
+        <div class="form-field">
+            <label for="login-username">Email:</label>
+            <input id="login-username"
+                   class="form-control"
+                   name="username"
+                   formControlName="username">
+        </div>
+        <div class="form-field">
+            <label for="login-password">Password:</label>
+            <input id="login-password"
+                   class="form-control"
+                   name="password"
+                   formControlName="password"
+                   type="password">
+        </div>
+        <div class="form-buttons">
+            <button class="btn btn-primary"
+                    (click)="login()">Login
+            </button>
+        </div>
+    </div>
+</div>

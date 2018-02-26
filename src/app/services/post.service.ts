@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 
 import {Observable} from 'rxjs/Observable';
-import {of} from 'rxjs/observable/of';
 
-import {Post} from '../classes/posts';
+import {Post} from '@app/classes/posts';
 
 @Injectable()
 export class PostService {

@@ -19,7 +19,7 @@
 			"testTsconfig": "tsconfig.spec.json",
 			"prefix": "app",
 			"styles": [
-				"assets/css/global.scss",
+				"assets/scss/global.scss",
 				"../node_modules/ng-snotify/styles/material.scss"
 			],
 			"scripts": [],

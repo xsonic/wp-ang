@@ -6,13 +6,12 @@ import {SnotifyService} from 'ng-snotify'
 @Injectable()
 export class AuthGuardService implements CanActivate {
 
-    constructor(public auth: AuthService,
-                public router: Router,
+    constructor(public router: Router,
                 private snotifyService: SnotifyService) {
     }
 
     canActivate(): boolean {
-        if (!this.auth.isAuthenticated()) {
+        if (!AuthService.isAuthenticated()) {
             this.router.navigate(['login']);
             this.snotifyService.error('Log in first', 'Denied');
             return false;
